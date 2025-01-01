@@ -1,10 +1,15 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TasksModule } from './tasks/tasks.module';
 
 @Module({
-  imports: [TasksModule],
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+    }),
+    TasksModule,
+  ],
   controllers: [],
   providers: [],
 })
-
 export class AppModule {}
